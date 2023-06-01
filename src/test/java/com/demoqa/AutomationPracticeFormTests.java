@@ -2,10 +2,12 @@ package com.demoqa;
 
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
+
 
 public class AutomationPracticeFormTests extends TestBase {
 
-    private static final String FORM = "https://demoqa.com/automation-practice-form";
+    private static final String FORM = baseUrl; //"https://demoqa.com/automation-practice-form";
     private static final String NAME = "Ivan";
     private static final String SURNAME = "Ivanov";
     private static final String EMAIL = "ivanov.ivan@test.com";
