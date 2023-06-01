@@ -9,29 +9,30 @@ repositories {
 
 allure {
     report {
-        version.set("2.19.0")
+        version.set("2.20.0")
     }
     adapter { // отвечает за появление папочки build/allure-results
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
-            junit5 { //название фреймворка
-                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+            junit5 {
+                adapterVersion.set("2.20.0")
             }
         }
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
 dependencies {
-    testImplementation (
+    testImplementation(
+            'com.codeborne:selenide:6.10.3',
             "com.github.javafaker:javafaker:1.0.2",
-            "com.codeborne:selenide:6.9.0",
-            "io.qameta.allure:allure-selenide:2.19.0",
             "org.junit.jupiter:junit-jupiter:5.9.1",
-            "org.slf4j:slf4j-simple:1.7.32"
+            "io.qameta.allure:allure-selenide:2.20.0",
+            "org.aspectj:aspectjweaver:1.9.9.1",
+            'org.slf4j:slf4j-simple:2.0.5'
     )
 }
 
@@ -45,12 +46,6 @@ tasks.withType(Test) {
         }
     }
 }
-
-//task form_test(type: Test) {
-//    useJUnitPlatform{
-//        includeTags("form")
-//    }
-//}
 
 test {
     useJUnitPlatform()
